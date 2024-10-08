@@ -1,0 +1,98 @@
+/* Remove default list styling */
+ul {
+    list-style-type: none;
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+/* Center align elements inside the App container */
+.App {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    height: 100vh; /* Full height of the viewport */
+    background-color: #f5f5f5; /* Light background for contrast */
+}
+
+/* Beautified input field */
+.inp {
+    height: 40px; /* Increased height for better usability */
+    width: 350px; /* Increased width */
+    background-color: hsl(240, 56%, 15%); /* Slightly lighter dark blue */
+    color: white;
+    border: 2px solid green;
+    padding: 5px 10px; /* Added padding for a better look */
+    border-radius: 8px; /* More rounded corners */
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    font-size: 16px; /* Larger font size */
+    transition: all 0.3s ease; /* Smooth transition on hover and focus */
+}
+
+/* Input field focus effect */
+.inp:focus {
+    border-color: lightgreen; /* Change border color when focused */
+    outline: none; /* Remove default outline */
+    background-color: hsl(240, 56%, 18%); /* Slight color change */
+}
+
+/* Beautified add button */
+.add {
+    height: 40px;
+    background-color: rgb(29, 51, 29);
+    color: white;
+    border: 2px solid hsl(240, 56%, 9%);
+    padding: 5px 20px; /* Extra padding for a better look */
+    border-radius: 8px; /* More rounded corners */
+    cursor: pointer; /* Show pointer on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    font-size: 16px; /* Larger font size */
+    margin-top: 10px;
+    transition: all 0.3s ease; /* Smooth transition */
+}
+
+/* Add button hover effect */
+.add:hover {
+    background-color: hsl(240, 56%, 15%);
+    transform: translateY(-2px); /* Slight lift on hover */
+    border-color: green;
+}
+
+/* Larger font size for span */
+.span {
+    font-size: 22px; /* Increase font size */
+    color: #333; /* Dark gray for better readability */
+    border-bottom: 20px;
+
+}
+
+/* Beautified checkbox */
+.checkbox {
+    width: 24px; /* Increased width */
+    height: 24px; /* Increased height */
+    margin-right: 15px; /* More space between checkbox and text */
+    margin-top: 20px; /* Space below the checkbox to avoid overlap */
+    cursor: pointer; /* Show pointer on hover */
+}
+    
+
+/* Beautified delete button */
+.delete {
+    height: 40px;
+    width: 40px;
+    background-color: rgb(185, 3, 3);
+    border-radius: 50%;
+    margin-left: 15px; /* Increase margin for better spacing */
+    border: 2px solid rgba(0, 0, 0, 0.2); /* Subtle border */
+    cursor: pointer; /* Show pointer on hover */
+    transition: all 0.3s ease; /* Smooth transition */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Delete button hover effect */
+.delete:hover {
+    background-color: rgb(255, 50, 50); /* Lighter red on hover */
+    transform: scale(1.1); /* Slightly increase size on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+}
