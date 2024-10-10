@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import "../App.css";
-import { Checkbox, Button, TextField } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
+import { Checkbox, Button } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete"; // Make sure to import DeleteIcon for the delete button
 
 function Todo() {
   const [inputValue, setInputValue] = useState("");
 
+  // Retrieve todos from localStorage, or use default todos if none are stored
   const [todos, setTodos] = useState(() => {
     const savedTodos = localStorage.getItem("todos");
     return savedTodos
@@ -17,8 +18,9 @@ function Todo() {
         ];
   });
 
+  // Add new todo
   const addTodo = () => {
-    if (inputValue.trim() === "") return;
+    if (inputValue.trim() === "") return; // Prevent empty todos
 
     const newTodo = {
       id: todos.length + 1,
@@ -27,19 +29,22 @@ function Todo() {
     };
 
     setTodos([...todos, newTodo]);
-    setInputValue("");
+    setInputValue(""); // Clear input after adding todo
   };
 
+  // Handle pressing Enter to add a new todo
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       addTodo();
     }
   };
 
+  // Delete todo by ID
   const deleteTodo = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
+  // Toggle completion status of todo
   const toggleCompletion = (id) => {
     setTodos(
       todos.map((todo) =>
@@ -48,6 +53,7 @@ function Todo() {
     );
   };
 
+  // Save todos to localStorage whenever the todos array changes
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
@@ -55,16 +61,17 @@ function Todo() {
   return (
     <div className="todo">
       <div className="inputBlock">
-        <TextField
+        <input
+          className="inp"
+          type="text"
           placeholder="Enter To do..."
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-          onKeyDown={handleKeyPress}
+          onKeyDown={handleKeyPress} // Listen for Enter key
         />
-
-        <Button onClick={addTodo} variant="outlined">
+        <button className="add" onClick={addTodo}>
           Add
-        </Button>
+        </button>
       </div>
 
       <ul>
@@ -75,12 +82,20 @@ function Todo() {
               textDecoration: todo.isCompleted ? "line-through" : "none",
             }}
           >
-            <Checkbox defaultChecked />
-
+            <input
+            type="checkbox"
+            className="checkbox"
+              checked={todo.isCompleted}
+              onChange={() => toggleCompletion(todo.id)}
+            />
             <span className="span">{todo.name}</span>
-            <Button variant="outlined" startIcon={<DeleteIcon />}>
-              Delete
-            </Button>
+            <button
+            className="delete"
+              variant="outlined"
+              onClick={() => deleteTodo(todo.id)}
+            >
+              X
+            </button>
           </li>
         ))}
       </ul>
